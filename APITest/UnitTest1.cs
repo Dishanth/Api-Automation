@@ -57,7 +57,7 @@ namespace APITest
             Assert.AreEqual(response.author, "First", "Error");
         }
 
-        private async Task<IRestResponse<T>> ExecuteAsyncRequest<T>(RestClient client , IRestRequest request)
+        private async Task<IRestResponse<T>> ExecuteAsyncRequest<T>(RestClient client, IRestRequest request) where T : class, new()
         {
             var taskCompletionSource = new TaskCompletionSource<IRestResponse<T>>();
             client.ExecuteAsync<T>(request, restresponse =>
